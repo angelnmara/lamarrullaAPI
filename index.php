@@ -1,27 +1,39 @@
 <?php
-    $serverName = "localhost";
-    $userName = "dave";
-    $password = "maradr";
-    $dbname = "dbmadeinchiconcuac";
+
+    require_once('vendor/autoload.php');
+    include('acceso/acceso.php');
+    include('conexion/conexion.php');
 
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['REQUEST_URI'],'/'));        
     $input = json_decode(file_get_contents('php://input'),true);
 
-    //create connexion
-    $conn = new mysqli($serverName, $userName, $password, $dbname);
-
-    //valida conecion
-    if($conn->connect_error){
-        die("coneccion fallo: " . $conn->connect_error);
-    }
+    $acceso = new login();
+    $conecta = new conecta();
 
     //valida base y tabla
 
-    $sqlSch = "SELECT SCHEMA_NAME FROM" . " INFORMATION_SCHEMA" . ".SCHEMATA WHERE SCHEMA_NAME = '" . $request[1] . "'";
-    $sqlTbl = "SELECT table_name FROM" . " information_schema.tables WHERE table_schema = '" . $request[1] . "' AND table_name = '" . $request[2] . "' LIMIT 1;";
+    if(count($request) <= 1){
+        echo json_encode("Se tiene que ingresar metodo o base de datos");
+        return;
+    }else{
+        if(count($request) <= 2){
+            if($request[1] != "login"){
+                echo json_encode("Se tiene que ingresar una tabla");
+                return;
+            }else{
+                $acceso->setUsuario('Dave');
+                $acceso->setContrasenna('123');
+                $acceso->getToken();
+                return;
 
-    $result = $conn->query($sqlSch);
+            }            
+        }
+        $sqlSch = "SELECT SCHEMA_NAME FROM" . " INFORMATION_SCHEMA" . ".SCHEMATA WHERE SCHEMA_NAME = '" . $request[1] . "'";
+        $sqlTbl = "SELECT table_name FROM" . " information_schema.tables WHERE table_schema = '" . $request[1] . "' AND table_name = '" . $request[2] . "' LIMIT 1;";
+    }
+
+    $result = $conecta->getConsulta($sqlSch);
 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
@@ -32,7 +44,7 @@
         return;
     }
 
-    $result = $conn->query($sqlTbl);
+    $result = $conecta->getConsulta($sqlTbl);
 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
@@ -114,8 +126,8 @@
             print_r('default');
             break;
     }
-    
-    $result = $conn->query($sql);
+
+    $result = $conecta->getConsulta($sql);
 
     if($result->num_rows > 0){
     	while($row = $result->fetch_assoc()){            
