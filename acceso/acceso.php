@@ -1,4 +1,9 @@
 <?php
+
+    include('conexion/conexion.php');
+
+    $conecta = new conecta();
+
 	class login{
 		private $usuario;
 		private $contrasenna;

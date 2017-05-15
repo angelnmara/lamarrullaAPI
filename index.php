@@ -2,7 +2,6 @@
 
     require_once('vendor/autoload.php');
     include('acceso/acceso.php');
-    include('conexion/conexion.php');
 
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['REQUEST_URI'],'/'));        
@@ -26,7 +25,6 @@
                 $acceso->setContrasenna('123');
                 $acceso->getToken();
                 return;
-
             }            
         }
         $sqlSch = "SELECT SCHEMA_NAME FROM" . " INFORMATION_SCHEMA" . ".SCHEMATA WHERE SCHEMA_NAME = '" . $request[1] . "'";
