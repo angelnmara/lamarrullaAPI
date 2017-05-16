@@ -18,7 +18,7 @@
         }
 
         public function getToken(){
-            $this->token = $this->usuario;
+            $this->token = password_hash($this->usuario, PASSWORD_BCRYPT);
         	return $this->token;
         }
 
