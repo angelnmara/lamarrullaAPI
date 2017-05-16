@@ -3,6 +3,10 @@
     require_once('vendor/autoload.php');
     include('acceso/acceso.php');
 
+    use Zend\Config\Factory;
+    $config = Factory::fromFile('config/config.php', true);
+    $metodos = $config->get('metodos');
+
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['REQUEST_URI'],'/'));        
     $input = json_decode(file_get_contents('php://input'),true);
@@ -17,13 +21,13 @@
         return;
     }else{
         if(count($request) <= 2){
-            if($request[1] != "login"){
-                echo json_encode("Se tiene que ingresar una tabla");
-                return;
-            }else{
+            if(in_array($request[1], $metodos->toArray())){
                 $acceso->setUsuario('Dave');
                 $acceso->setContrasenna('123');
                 $acceso->getToken();
+                return;
+            }else{
+                echo json_encode("Se tiene que ingresar una tabla");
                 return;
             }            
         }

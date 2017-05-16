@@ -8,7 +8,9 @@ return array(
         'user'     => 'dave', // Database username
         'password' => 'maradr', // Database password
         'host'     => 'localhost', // Database host
-        'name'     => 'dbmadeinchiconcuac', // Database schema name
+        'name'     => 'dbmadeinchiconcuac' // Database schema name
     ),
     'serverName' => 'lamarrulla.space',
+    'metodos' => array('login',
+        'alta')
 );
