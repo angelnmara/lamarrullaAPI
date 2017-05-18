@@ -21,15 +21,21 @@
         return;
     }else{
         if(count($request) <= 2){
-            if(in_array($request[1], $metodos->toArray())){
-                $acceso->setUsuario('Dave');
-                $acceso->setContrasenna('123');
-                $acceso->getToken();
-                return;
-            }else{
-                echo json_encode("Se tiene que ingresar una tabla");
-                return;
-            }            
+            switch($request[1]){
+                /*login*/
+                case $metodos->toArray()[0]:
+                    $acceso->setUsuario('alejandro');
+                    $acceso->setCorreo('alejandro.rincon@hotmail.com');
+                    $acceso->setContrasenna('maradr');
+                    echo json_encode($acceso->createUser());
+                    break;
+                /*alta*/
+                case $metodos->toArray()[1]:
+                    break;
+                default:
+                    echo json_encode("Se tiene que ingresar una tabla");
+            }
+            return;
         }
         $sqlSch = "SELECT SCHEMA_NAME FROM" . " INFORMATION_SCHEMA" . ".SCHEMATA WHERE SCHEMA_NAME = '" . $request[1] . "'";
         $sqlTbl = "SELECT table_name FROM" . " information_schema.tables WHERE table_schema = '" . $request[1] . "' AND table_name = '" . $request[2] . "' LIMIT 1;";
