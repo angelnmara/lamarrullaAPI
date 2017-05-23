@@ -6,10 +6,13 @@
     use Zend\Config\Factory;
     $config = Factory::fromFile('config/config.php', true);
     $metodos = $config->get('metodos');
+    $inputs = $config->get('inputs');
 
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['REQUEST_URI'],'/'));        
     $input = json_decode(file_get_contents('php://input'),true);
+
+    header('Content-Type: application/json');
 
     $acceso = new login();
     $conecta = new conecta();
@@ -24,19 +27,40 @@
             switch($request[1]){
                 /*login*/
                 case $metodos->toArray()[0]:
+                    if($method != 'POST'){
+                        echo json_encode("Metodo no permitido para " . $metodos->toArray()[0]);
+                    }elseif($input==null){
+                        echo json_encode("Se requieren parametros de entrada para metodo " . $metodos->toArray()[0]);
+                    }
+                    elseif(!array_key_exists('usuarioOcorreo', $input)){
+                        echo json_encode("Se tiene que proporcionar usuario o correo");
+                    }elseif(!array_key_exists('contrasenna', $input)){
+                        echo json_encode("Se tiene que proporcionar contraseña");
+                    }else{
+                        $acceso->setContrasenna($input[$inputs->toArray()[2]]);
+                        $acceso->setusuarioOcorreo($input[$inputs->toArray()[1]]);
+                        echo json_encode($acceso->loginUser());
+                    }
                     break;
                 /*alta*/
                 case $metodos->toArray()[1]:
                     if($method != 'POST'){
-                        echo json_encode("Metodo no permitido");
+                        echo json_encode("Metodo no permitido para " . $metodos->toArray()[1]);
                     }
                     elseif($input == null || count($input) != 3){
                         echo json_encode("Parametros de entrada incorrectos");
                     }
+                    elseif(!array_key_exists('usuario', $input)){
+                        echo json_encode("Usuario es requerido");
+                    }elseif(!array_key_exists('correo', $input)){
+                        echo json_encode("Correo es requerido");
+                    }elseif(!array_key_exists('contrasenna', $input)){
+                        echo json_encode("Contraseña es requerida");
+                    }
                     else{
-                        $acceso->setUsuario(array_values($input)[0]);
-                        $acceso->setCorreo(array_values($input)[1]);
-                        $acceso->setContrasenna(array_values($input)[2]);
+                        $acceso->setUsuario($input[$inputs->toArray()[0]]);
+                        $acceso->setCorreo($input[$inputs->toArray()[3]]);
+                        $acceso->setContrasenna($input[$inputs->toArray()[4]]);
                         echo json_encode($acceso->createUser());
                     }
                     break;
@@ -49,6 +73,12 @@
         $sqlSch = "SELECT SCHEMA_NAME FROM" . " INFORMATION_SCHEMA" . ".SCHEMATA WHERE SCHEMA_NAME = '" . $request[1] . "'";
         $sqlTbl = "SELECT table_name FROM" . " information_schema.tables WHERE table_schema = '" . $request[1] . "' AND table_name = '" . $request[2] . "' LIMIT 1;";
     }
+
+    print_r($acceso->validaToken());
+
+    /*if($acceso->validaToken()){
+        echo json_encode("token invalido");
+    }*/
 
     $result = $conecta->getConsulta($sqlSch);
 
@@ -74,8 +104,6 @@
 
     $campos = "";
     $valores = "";
-    
-    header('Content-Type: application/json');
 
     /*print_r($method != 'POST'? 'true': 'false');*/
 

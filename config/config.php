@@ -12,5 +12,6 @@ return array(
     ),
     'serverName' => 'lamarrulla.space',
     'metodos' => array('login',
-        'alta')
+        'alta'),
+    'inputs' => array('usuario', 'usuarioOcorreo', 'contrasenna', 'correo', 'contrasenna')
 );
