@@ -24,16 +24,25 @@
             switch($request[1]){
                 /*login*/
                 case $metodos->toArray()[0]:
-                    $acceso->setUsuario('alejandro');
-                    $acceso->setCorreo('alejandro.rincon@hotmail.com');
-                    $acceso->setContrasenna('maradr');
-                    echo json_encode($acceso->createUser());
                     break;
                 /*alta*/
                 case $metodos->toArray()[1]:
+                    if($method != 'POST'){
+                        echo json_encode("Metodo no permitido");
+                    }
+                    elseif($input == null || count($input) != 3){
+                        echo json_encode("Parametros de entrada incorrectos");
+                    }
+                    else{
+                        $acceso->setUsuario(array_values($input)[0]);
+                        $acceso->setCorreo(array_values($input)[1]);
+                        $acceso->setContrasenna(array_values($input)[2]);
+                        echo json_encode($acceso->createUser());
+                    }
                     break;
                 default:
                     echo json_encode("Se tiene que ingresar una tabla");
+                    break;
             }
             return;
         }
@@ -98,7 +107,7 @@
                 foreach ($input as $key => $value) {
                     $valores = $valores . $key . "=\"" . $value . "\",";
                     /*$campos = $campos . $key . ",";*/
-                }                
+                };
 
                 $valores = substr($valores, 0, strlen($valores)-1);
                 /*$campos = substr($campos, 0, strlen($campos)-1);*/
@@ -114,7 +123,7 @@
             foreach ($input as $key => $value) {
                     $valores = $valores . "''". $value . "'',";
                     $campos = $campos . $key . ",";
-            }                
+            };
 
             $valores = substr($valores, 0, strlen($valores)-1);
             $campos = substr($campos, 0, strlen($campos)-1);
