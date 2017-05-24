@@ -80,7 +80,10 @@
         echo json_encode("Token Expiro");
         return;
     }elseif($acceso->validaToken() == "Signature verification failed"){
-        echo json_encode("Firma invalida");
+        echo json_encode("Token invalido");
+        return;
+    }elseif ($acceso->validaToken() == "Syntax error, malformed JSON"){
+        echo json_encode("Token invalido");
         return;
     }
 

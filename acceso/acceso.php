@@ -79,7 +79,7 @@
                 $tokenId    = base64_encode(mcrypt_create_iv(32));
                 $issuedAt   = time();
                 $notBefore  = $issuedAt + 10;  //Adding 10 seconds
-                $expire     = $notBefore + (20); // Adding 60 seconds
+                $expire     = $notBefore + (60 * 60); // Adding 60 seconds
                 $serverName = $config->get('serverName');
 
                 /*
@@ -157,8 +157,6 @@
 
                     $token = JWT::decode($jwt, $secretKey, [$config->get('jwt')->get('algorithm')]);
 
-                    header('Content-type: application/json');
-
                     return $token;
 
                 } catch (Exception $e) {
@@ -177,4 +175,5 @@
             //return 1;
 
         }
+
 	}
