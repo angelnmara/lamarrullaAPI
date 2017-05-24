@@ -74,11 +74,12 @@
         $sqlTbl = "SELECT table_name FROM" . " information_schema.tables WHERE table_schema = '" . $request[1] . "' AND table_name = '" . $request[2] . "' LIMIT 1;";
     }
 
-    print_r($acceso->validaToken());
+    //print_r($acceso->validaToken());
 
-    /*if($acceso->validaToken()){
-        echo json_encode("token invalido");
-    }*/
+    if($acceso->validaToken() == "Expired token"){
+        echo json_encode($acceso->validaToken());
+        return;
+    }
 
     $result = $conecta->getConsulta($sqlSch);
 

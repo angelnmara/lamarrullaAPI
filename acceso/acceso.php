@@ -79,7 +79,7 @@
                 $tokenId    = base64_encode(mcrypt_create_iv(32));
                 $issuedAt   = time();
                 $notBefore  = $issuedAt + 10;  //Adding 10 seconds
-                $expire     = $notBefore + 60; // Adding 60 seconds
+                $expire     = $notBefore + (20); // Adding 60 seconds
                 $serverName = $config->get('serverName');
 
                 /*
@@ -157,24 +157,16 @@
 
                     $token = JWT::decode($jwt, $secretKey, [$config->get('jwt')->get('algorithm')]);
 
-                    $asset = base64_encode(file_get_contents('http://lorempixel.com/200/300/cats/'));
-
-                    /*
-                     * return protected asset
-                     */
                     header('Content-type: application/json');
 
                     return $token;
-
-                    /*return json_encode([
-                        'img'    => $asset
-                    ]);*/
 
                 } catch (Exception $e) {
                     /*
                      * the token was not able to be decoded.
                      * this is likely because the signature was not able to be verified (tampered token)
                      */
+                    return $e->getMessage();
                     header('HTTP/1.0 401 Unauthorized');
                 }
             }else{
