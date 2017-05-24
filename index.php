@@ -77,7 +77,10 @@
     //print_r($acceso->validaToken());
 
     if($acceso->validaToken() == "Expired token"){
-        echo json_encode($acceso->validaToken());
+        echo json_encode("Token Expiro");
+        return;
+    }elseif($acceso->validaToken() == "Signature verification failed"){
+        echo json_encode("Firma invalida");
         return;
     }
 
