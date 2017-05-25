@@ -3,7 +3,9 @@
     require_once('vendor/autoload.php');
     include('acceso/acceso.php');
 
+    use Zend\Http\PhpEnvironment\Request;
     use Zend\Config\Factory;
+
     $config = Factory::fromFile('config/config.php', true);
     $metodos = $config->get('metodos');
     $inputs = $config->get('inputs');
@@ -16,6 +18,7 @@
 
     $acceso = new login();
     $conecta = new conecta();
+    $reqhead = new Request();
 
     //valida base y tabla
 
@@ -76,14 +79,20 @@
 
     //print_r($acceso->validaToken());
 
-    if($acceso->validaToken() == "Expired token"){
-        echo json_encode("Token Expiro");
+    $authHeader = $reqhead->getHeader('token');
+
+    /*valida si se envio un token en la peticion*/
+    if($authHeader!=null){
+        $acceso->setToken($authHeader);
+        $token = $acceso->validaToken();
+    } else{
+        echo json_encode("se tiene que enviar un token para la consulta");
         return;
-    }elseif($acceso->validaToken() == "Signature verification failed"){
-        echo json_encode("Token invalido");
-        return;
-    }elseif ($acceso->validaToken() == "Syntax error, malformed JSON"){
-        echo json_encode("Token invalido");
+    }
+
+    /*si regresa error la consulta*/
+    if($token[0] == 0){
+        echo json_encode($token[1]->getMessage());
         return;
     }
 
@@ -91,7 +100,7 @@
 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo $row["SCHEMA_NAME"];
+            echo json_encode($row["SCHEMA_NAME"]);
         }
     }else{
         echo json_encode("Base de datos " . $request[1] . " inexistente");

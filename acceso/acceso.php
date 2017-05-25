@@ -3,7 +3,6 @@
     require_once('vendor/autoload.php');
 
     use Zend\Config\Factory;
-    use Zend\Http\PhpEnvironment\Request;
     use Firebase\JWT\JWT;
 
     include('conexion/conexion.php');
@@ -16,6 +15,10 @@
 		private $token;
 		private $usuarioOcorreo;
 		private $contrasennaE;
+
+		public function setToken($token){
+		    $this->token = $token;
+        }
 
 		public function setusuarioOcorreo($usuarioOcorreo){
 		    $this->usuarioOcorreo = $usuarioOcorreo;
@@ -138,12 +141,8 @@
 
         public function validaToken(){
 
-            $request = new Request();
-
-            $authHeader = $request->getHeader('token');
-
-            if($authHeader){
-                list($jwt) = sscanf($authHeader->toString(), 'Token :%s');
+            if($this->token){
+                list($jwt) = sscanf($this->token->toString(), 'Token :%s');
             }
 
             if($jwt){
@@ -157,14 +156,14 @@
 
                     $token = JWT::decode($jwt, $secretKey, [$config->get('jwt')->get('algorithm')]);
 
-                    return $token;
+                    return [1, $token];
 
                 } catch (Exception $e) {
                     /*
                      * the token was not able to be decoded.
                      * this is likely because the signature was not able to be verified (tampered token)
                      */
-                    return $e->getMessage();
+                    return [0, $e];
                     header('HTTP/1.0 401 Unauthorized');
                 }
             }else{
