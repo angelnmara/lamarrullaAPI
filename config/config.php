@@ -7,7 +7,7 @@ return array(
     'database' => array(
         'user'     => 'dave', // Database username
         'password' => 'maradr', // Database password
-        'host'     => 'localhost', // Database host
+        'host'     => 'yashiropaintingcom.ipagemysql.com', // Database host localhost
         'name'     => 'dbmadeinchiconcuac' // Database schema name
     ),
     'serverName' => 'lamarrulla.space',

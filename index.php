@@ -188,6 +188,7 @@
             break;
     }
 
+    echo  json_encode("consulta: " . $sql);
     $result = $conecta->getConsulta($sql);
 
     if($result->num_rows > 0){

@@ -15,29 +15,31 @@ BEGIN
     DECLARE exit HANDLER FOR sqlexception, sqlwarning
     BEGIN 		
 		get diagnostics condition 1
-        @p2 = message_text;
-        if (locate('fcCorreoElectronico', @p2) > 1)
+        @err = message_text;
+        if (locate('fcCorreoElectronico', @err) > 1)
         then set @err = 'Correo Electronico Existente';
-        elseif locate('fcUsu', @p2)
+        elseif locate('fcUsu', @err)
         then set @err = 'Usuario existente';
         end if;
-		select 0 as salida, @err as error;        
-		rollback;		
+		select 0 as salida, @err as error;
+		rollback;
     END;
 
 	start transaction;
-        
-    insert tbusu(fcUsu, fcCorreoElectronico) values(usuario, correo);
-		
+
+    insert tbUsu(fcUsu, fcCorreoElectronico) values(usuario, correo);
+
 	select fiIdUsu into @idusuario
-	from tbusu
+	from tbUsu
 	where fcUsu = usuario
 	and fcCorreoElectronico = correo;
-		
-    insert tbusupassw(fiIdUsu, fcUsuPassw)values(@idusuario, contrasenna);
+
+    insert tbUsuPassw(fiIdUsu, fcUsuPassw)values(@idusuario, contrasenna);
     
     select 1 as salida;
         	
     commit;	
     
-END$$
+END
+
+$$

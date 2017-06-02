@@ -22,7 +22,7 @@
 
             //valida conecion
             if($conn->connect_error){
-                die("coneccion fallo: " . $conn->connect_error);
+                die("conexion fallo: " . $conn->connect_error);
             }
 
             return $this->result = $conn->query($sql);

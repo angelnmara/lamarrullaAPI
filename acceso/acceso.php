@@ -45,6 +45,7 @@
             $conecta = new conecta();
             $this->contrasennaE = $this->getContrasenniaE();
             $sql = "call spAltaUsuario ('" . $this->usuario . "', '" .  $this->correo ."', '" . $this->contrasennaE . "');";
+            /*echo json_encode($sql);*/
             $result = $conecta->getConsulta($sql);
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
@@ -67,6 +68,7 @@
 
             $conecta = new conecta();
             $sql = "call getPassw('". $this->usuarioOcorreo . "');";
+            /*echo json_encode($sql);*/
             $result = $conecta->getConsulta($sql);
             if($result->num_rows > 0){
                 while ($row = $result->fetch_assoc()){
@@ -76,6 +78,10 @@
                 }
             }else{
                 return json_encode("problema en select");
+            }
+
+            if($usrId = 0){
+                return json_encode("usuario no existe");
             }
 
             if(password_verify($this->contrasenna, $passwdb)){
