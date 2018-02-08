@@ -100,7 +100,8 @@
 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo json_encode($row["SCHEMA_NAME"]);
+            /*echo json_encode($row["SCHEMA_NAME"]);*/
+            error_log($row["SCHEMA_NAME"]);
         }
     }else{
         echo json_encode("Base de datos " . $request[1] . " inexistente");
