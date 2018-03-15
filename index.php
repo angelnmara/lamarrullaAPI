@@ -112,7 +112,8 @@
 
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo $row["table_name"];
+            /*echo $row["table_name"];*/
+            error_log($row["table_name"]);
         }
     }else{
         echo json_encode("Tabla " . $request[2] . " no existe en base de datos");
@@ -143,14 +144,15 @@
 
             $sql = "call spAPI (1, '" . $request[1] . "', '" . $request[2] . "', 'v', 'c'," . $request[3] . ");";
             
-            print_r($sql);
+            /*print_r($sql);*/
+            error_log($sql);
 
             break;
 
         case 'PUT':                
 
                 foreach ($input as $key => $value) {
-                    $valores = $valores . $key . "=\"" . $value . "\",";
+                    $valores = $valores . $key . "=\"" . (is_bool($value) ? ($value ? 'true' : 'false') : $value) . "\",";
                     /*$campos = $campos . $key . ",";*/
                 };
 
@@ -189,7 +191,7 @@
             break;
     }
 
-    echo  json_encode("consulta: " . $sql);
+    /*echo  json_encode("consulta: " . $sql);*/
     $result = $conecta->getConsulta($sql);
 
     if($result->num_rows > 0){
