@@ -19,14 +19,15 @@ drop table if exists tbCatObjeto;
 drop table if exists tbCatCampo;
 drop table if exists tbMemberRol;
 drop table if exists tbCatRol;
-
-drop table if exists tbCarteleraPeliculas;
-
+drop table if exists tbPelicualasCartelera;
 drop table if exists tbCartelera;
-drop table if exists tbSala;
 drop table if exists tbPeliculas;
+drop table if exists tbSucursalTpSala;
+drop table if exists tbSala;
 drop table if exists tbSucursal;
-drop table if exists tbTpSala;
+drop table if exists tbGenero;
+drop table if exists tbClasificacion;
+
 
 
 /*	------------------------------------	*/
@@ -122,45 +123,73 @@ create table if not exists tbDtPersonalesUsu(fiIdUsu int,
 							references tbUsu(fiIdUsu)
                             on delete cascade);
                             
+create table if not exists tbGenero(fiIdGenero int not null auto_increment primary key,
+									fcGeneroDesc varchar(100));
+                                    
+create table if not exists tbClasificacion(fiIdClasificacion int not null auto_increment primary key,
+									fcClasificacionDesc varchar(100));
+                            
 create table if not exists tbPeliculas(fiIdPelicula int not null auto_increment primary key,
 									fcPeliculaDesc char(100),
-                                    fdPeliculaFecEstreno datetime default CURRENT_TIMESTAMP,
-                                    fnPeliculaStat bit default true);
+                                    fiIdGenero int,
+                                    fiDuracion int,                                    
+                                    fiIdClasificacion int,
+                                    fcPeliculaSinopsis varchar(2000),
+                                    fcPeliculaActores varchar(2000),
+                                    fcPeliculaDirectores varchar(1000),
+                                    fcPeliculaURL char(200),
+                                    fnPeliculaStat bit default 1,
+                                    constraint foreign key(fiIdGenero)
+                                    references tbGenero(fiIdGenero),
+                                    constraint foreign key(fiIdClasificacion)
+                                    references tbClasificacion(fiIdClasificacion));								
                                     
-create table if not exists tbCartelera(fiIdCartelera int not null auto_increment primary key,									
-									fcCarteleraDesc char(200),                                    									
+create table if not exists tbSucursal(fiIdSucursal int not null auto_increment primary key,
+									fcSucursalDesc varchar(500),
+                                    fcSucursalDireccion varchar(1000),
+                                    fdSucursalLat decimal(18,10),
+                                    fdSucursalLong decimal(18,10),
+                                    fnSucursalStat bit default 1);                                    
+                                    
+create table if not exists tbCartelera(fiIdCartelera int not null auto_increment primary key,
+									fcCarteleraDesc char(200),                                    
                                     fdCarteleraFecIni datetime default CURRENT_TIMESTAMP,
                                     fdCarteleraFecFin datetime default CURRENT_TIMESTAMP,
-                                    fnCarteleraStat bit default 1);
+                                    fiIdSucursal int,
+                                    fnCarteleraStat bit default 1,
+                                    constraint foreign key(fiIdSucursal)
+                                    references tbSucursal(fiIdSucursal));
                                     
-create table if not exists tbCarteleraPeliculas(fiIdCarteleraPaliculas int not null auto_increment primary key,
-												fiIdCartelera int,
-                                                fiIdPelicula int,
-                                                fnCarteleraPaliculasStat bit default 1,
+create table if not exists tbPelicualasCartelera(fiIdPelicualasCartelera int not null auto_increment primary key,
+												fiIdPelicula int,
+                                                fiIdCartelera int,
+                                                fnPelicualasCartelera bit default 1,
                                                 constraint foreign key(fiIdPelicula)
-												references tbPeliculas(fiIdPelicula),
+                                                references tbpeliculas(fiIdPelicula),
                                                 constraint foreign key(fiIdCartelera)
-                                                references tbCartelera(fiIdCartelera));                        
+                                                references tbcartelera(fiIdCartelera));
                                     
-create table if not exists tbSucursales(fiIdSucursal int not null auto_increment primary key,
-									fcSucursalDesc varchar(500),
-                                    fcSucursalLat decimal(18,10),
-                                    fcSucursalLong decimal(18,2),
-                                    fnSucursalStat bit default 1);
-                                    
-create table if not exists tbTpSalas(fiIdTpSala int not null auto_increment primary key,
+create table if not exists tbTpSala(fiIdTpSala int not null auto_increment primary key,
 									fcTpSalaDesc varchar(500),
                                     fcTpSalaTam int,
                                     fcTpSalaStat bit default 1);
                                     
-create table if not exists tbSalas(fiIdSala int not null auto_increment primary key,
+create table if not exists tbSucursalTpSala(fiIdSucursalTpSala int not null auto_increment primary key,
+											fiIdSucursal int,
+                                            fiIdTpSala int,
+                                            constraint foreign key(fiIdSucursal)
+                                            references tbSucursal(fiIdSucursal),
+                                            constraint foreign key(fiIdTpSala)
+                                            references tbtpsala(fiIdTpSala)); 
+                                    
+create table if not exists tbSala(fiIdSala int not null auto_increment primary key,
 								fiIdSucursal int,
                                 fiIdTpSala int,
 								fcSalaDesc varchar(500),
                                 constraint foreign key(fiIdSucursal)
-                                references tbSucursales(fiIdSucursal), 
+                                references tbSucursal(fiIdSucursal), 
                                 constraint foreign key(fiIdTpSala)
-                                references tbTpSalas(fiIdTpSala));                         
+                                references tbTpSala(fiIdTpSala));                         
                                                         
 /*	------------------------------------	*/
 /*		termina crea tablas					*/
@@ -219,19 +248,97 @@ insert tbDtPersonalesUsu(fcNombre, fcApPaterno, fcApMaterno, fiIdTpPer, fiIdNaci
 				values('José David', 'Rincon', 'Angeles', 1, 1, 'RIAD801201', 'Sierra Dorada', '29', '', '55720', '55', '51073141', '');
 insert tbUsuRol(fiIdUsu, fiIdRol, fnStatRol) values (1,1, true);
 insert tbUsuPassw(fiIdUsu, fcUsuPassw) values (1, 'madaver');
-insert tbUsuCveApi(fiIdUsu, fcCveAPI) values(1,'1234');                
+insert tbUsuCveApi(fiIdUsu, fcCveAPI) values(1,'1234');
 
-insert tbPeliculas(fcPeliculaDesc)values('Los vengadores');
-insert tbPeliculas(fcPeliculaDesc)values('Pantera negra');
-insert tbPeliculas(fcPeliculaDesc)values('Los minions');
-insert tbPeliculas(fcPeliculaDesc)values('Stars War');
+insert tbGenero(fcGeneroDesc)
+values('Comedia');
 
-insert tbCartelera (fcCarteleraDesc) values ('Cartelera 20180311');
+insert tbGenero(fcGeneroDesc)
+values('Accion');
 
-insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,1);
-insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,2);
-insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,3);
-insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,4);
+insert tbGenero(fcGeneroDesc)
+values('Drama');
+
+insert tbGenero(fcGeneroDesc)
+values('Terror');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('A');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('B');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('B-15');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('R');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('R-18');
+
+insert tbClasificacion(fcClasificacionDesc)
+values('C');
+
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('Deseo de Matar', 
+	1,
+    108,
+    6,
+	'Paul Kersey (Bruce Willis) es un cirujano felizmente casado, (Elisabeth Shue) y con una hija adorable en edad universitaria (Camila Morrone). Pero la desgracia quiere que madre e hija sean brutalmente atacadas en su casa. La madre muere y su hija queda absolutamente traumatizada. Con la policía sobrecargada de crímenes, Paul, en busca de venganza persigue a los agresores de su familia para hacer justicia. Los asesinatos anónimos de delincuentes pronto captan la atención de los medios y la ciudad se pregunta si este mortal vengados en un ángel de la guarda o un demonio. La furia y el destino colisionan en el intenso y emocionante filme “Deseo de Matar”.',
+    'Bruce Willis,Elisabeth Shue,Camila Morrone',
+    'Eli Roth',
+    'DeseoMatar');
+
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('PANTERA NEGRA', 
+	1,
+    126,
+    3,
+	'PANTERA NEGRA, de Marvel Studios, sigue a T''Challa, quien regresa a Wakanda, su solitaria nación africana de tecnología avanzada, para asumir como rey. Pero cuando un antiguo y poderoso enemigo reaparece, la fortaleza de T''Challa como rey y superhéroe es puesta a prueba cuando se ve involucrado en un gran conflicto que pone en riesgo el destino de Wakanda y del mundo entero.',
+    'Michael B. Jordan,Lupita Nyong''o,Chadwick Boseman,Danai Gurira',
+    'Ryan Coogler',
+    'PanteraNegra');
+    
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('La Forma Del Agua', 
+	3,
+    126,
+    1,
+	'Del experto escritor Guillermo del Toro, viene LA FORMA DEL AGUA – un cuento de hadas místico, que tiene como fondo la época de la Guerra Fría en los Estados Unidos, hacia 1963. En el laboratorio oculto de alta seguridad del gobierno donde trabaja, la solitaria Elisa (Sally Hawkins) está atrapada en una vida de silencio y aislamiento. La vida de Elisa cambia para siempre cuando ella y su compañera de trabajo Zelda (Octavia Spencer) descubren un experimento clasificado secreto. El reparto lo redondea Michael Shannon, Richard Jenkins, Michael Stuhlbarg y Doug Jones.',
+    'Richard Jenkins,Sally Hawkins,Octavia Spencer,Michael Shannon,Doug Jones',
+    'Guillermo Del Toro',
+    'FormaAgua');
+    
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('Las Aventuras de Lara Croft', 
+	1,
+    118,
+    2,
+	'Lara Croft, la independiente hija de un aventurero perdido, se esforzará más allá de sus límites cuando descubra la localización en la que su padre desapareció sin dejar rastro. Nueva película -reboot- sobre Lara Croft, la protagonista de la saga de videojuegos "Tomb Raider"',
+    'Alicia Vikander,Walton Goggins,Dominic West,Daniel Wu',
+    'Roar Uthanug',
+    'AventurasLara');
+    
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('La Maldición de la Casa Winchester', 
+	4,
+    100,
+    2,
+	'Sarah Winchester, la heredera millonaria de la fortuna de Armas Winchester, esta convencida que ella y su familia son perseguidos por las almas de los asesinados por el cañón del infame rifle. Su obsesión la ha llevado a la construcción constante de la enorme mansión, diseñada para mantener a los espíritus controlados. Eric Price, un psiquiatra con un turbio pasado, es contratado para determinar el estado mental de la Sra. Winchester. Tras una serie de pruebas psicológicas el Dr. Price descubre el plan de la Sra. Winchester de expiar las almas de todos aquellos asesinados a manos del rifle. Éste peligroso plan libera a los espíritus determinados a vengarse de la familia Winchester; mientras que el Dr. Price se ve obligado a enfrentar fantasmas de su pasado.',
+    'Helen Mirren,Jason Clarke',
+    'Michael Spierig, Peter Spierig',
+    'MaldicionWinchester');
+    
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+values('Tropa de Héroes', 
+	1,
+    130,
+    3,
+	'Cuenta la historia del primer escuadrón de fuerzas especiales enviado a Afganistán después del 9/11. Bajo el mando de un nuevo capitán, deben trabajar junto con un criminal de guerra para derrotar al Talibán.',
+    'Michael Peña,Chris Hemsworth,Michael Shannon,Navid Negahban',
+    'Nicolai Fuglsig',
+    'TropaHeroes');    
 
 
 /*	------------------------------------	*/
@@ -280,7 +387,7 @@ select *
 from tbPeliculas;
 
 select *
-from tbCartelera;
+from tbGenero;
 
 select *
-from tbCarteleraPeliculas;
+from tbclasificacion;
