@@ -19,8 +19,15 @@ drop table if exists tbCatObjeto;
 drop table if exists tbCatCampo;
 drop table if exists tbMemberRol;
 drop table if exists tbCatRol;
-drop table if exists tbPeliculas;
+
+drop table if exists tbCarteleraPeliculas;
+
 drop table if exists tbCartelera;
+drop table if exists tbSala;
+drop table if exists tbPeliculas;
+drop table if exists tbSucursal;
+drop table if exists tbTpSala;
+
 
 /*	------------------------------------	*/
 /*			termina borra tablas			*/
@@ -117,36 +124,43 @@ create table if not exists tbDtPersonalesUsu(fiIdUsu int,
                             
 create table if not exists tbPeliculas(fiIdPelicula int not null auto_increment primary key,
 									fcPeliculaDesc char(100),
-                                    fnPeliculaStat bit default 1);
+                                    fdPeliculaFecEstreno datetime default CURRENT_TIMESTAMP,
+                                    fnPeliculaStat bit default true);
                                     
-create table if not exists tbCartelera(fiIdCartelera int not null auto_increment primary key,
-									fiIdPelicula int,
+create table if not exists tbCartelera(fiIdCartelera int not null auto_increment primary key,									
 									fcCarteleraDesc char(200),                                    									
                                     fdCarteleraFecIni datetime default CURRENT_TIMESTAMP,
                                     fdCarteleraFecFin datetime default CURRENT_TIMESTAMP,
-                                    fnCarteleraStat bit default 1,
-                                    constraint foreign key(fiIdPelicula)
-                                    references tbPeliculas(fiIdPelicula));
+                                    fnCarteleraStat bit default 1);
                                     
-create table if not exists tbSucursal(fiIdSucursal int not null auto_increment primary key,
+create table if not exists tbCarteleraPeliculas(fiIdCarteleraPaliculas int not null auto_increment primary key,
+												fiIdCartelera int,
+                                                fiIdPelicula int,
+                                                fnCarteleraPaliculasStat bit default 1,
+                                                constraint foreign key(fiIdPelicula)
+												references tbPeliculas(fiIdPelicula),
+                                                constraint foreign key(fiIdCartelera)
+                                                references tbCartelera(fiIdCartelera));                        
+                                    
+create table if not exists tbSucursales(fiIdSucursal int not null auto_increment primary key,
 									fcSucursalDesc varchar(500),
                                     fcSucursalLat decimal(18,10),
                                     fcSucursalLong decimal(18,2),
                                     fnSucursalStat bit default 1);
                                     
-create table if not exists tbTpSala(fiIdTpSala int not null auto_increment primary key,
+create table if not exists tbTpSalas(fiIdTpSala int not null auto_increment primary key,
 									fcTpSalaDesc varchar(500),
                                     fcTpSalaTam int,
                                     fcTpSalaStat bit default 1);
                                     
-create table if not exists tbSala(fiIdSala int not null auto_increment primary key,
+create table if not exists tbSalas(fiIdSala int not null auto_increment primary key,
 								fiIdSucursal int,
                                 fiIdTpSala int,
 								fcSalaDesc varchar(500),
                                 constraint foreign key(fiIdSucursal)
-                                references tbSucursal(fiIdSucursal), 
+                                references tbSucursales(fiIdSucursal), 
                                 constraint foreign key(fiIdTpSala)
-                                references tbTpSala(fiIdTpSala));                         
+                                references tbTpSalas(fiIdTpSala));                         
                                                         
 /*	------------------------------------	*/
 /*		termina crea tablas					*/
@@ -207,6 +221,18 @@ insert tbUsuRol(fiIdUsu, fiIdRol, fnStatRol) values (1,1, true);
 insert tbUsuPassw(fiIdUsu, fcUsuPassw) values (1, 'madaver');
 insert tbUsuCveApi(fiIdUsu, fcCveAPI) values(1,'1234');                
 
+insert tbPeliculas(fcPeliculaDesc)values('Los vengadores');
+insert tbPeliculas(fcPeliculaDesc)values('Pantera negra');
+insert tbPeliculas(fcPeliculaDesc)values('Los minions');
+insert tbPeliculas(fcPeliculaDesc)values('Stars War');
+
+insert tbCartelera (fcCarteleraDesc) values ('Cartelera 20180311');
+
+insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,1);
+insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,2);
+insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,3);
+insert tbCarteleraPeliculas(fiIdCartelera, fiIdPelicula) values(1,4);
+
 
 /*	------------------------------------	*/
 /*			termina inserts					*/
@@ -249,3 +275,12 @@ from tbUsuPassw;
 
 select *
 from tbUsuCveApi;
+
+select *
+from tbPeliculas;
+
+select *
+from tbCartelera;
+
+select *
+from tbCarteleraPeliculas;
