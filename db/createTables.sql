@@ -146,7 +146,7 @@ create table if not exists tbPeliculas(fiIdPelicula int not null auto_increment 
                                     
 create table if not exists tbSucursal(fiIdSucursal int not null auto_increment primary key,
 									fcSucursalDesc varchar(500),
-                                    fcSucursalDireccion varchar(1000),
+                                    fcSucursalDir varchar(1000),
                                     fdSucursalLat decimal(18,10),
                                     fdSucursalLong decimal(18,10),
                                     fnSucursalStat bit default 1);                                    
@@ -161,8 +161,8 @@ create table if not exists tbCartelera(fiIdCartelera int not null auto_increment
                                     references tbSucursal(fiIdSucursal));
                                     
 create table if not exists tbPelicualasCartelera(fiIdPelicualasCartelera int not null auto_increment primary key,
-												fiIdPelicula int,
-                                                fiIdCartelera int,
+												fiIdCartelera int,
+												fiIdPelicula int,                                                
                                                 fnPelicualasCartelera bit default 1,
                                                 constraint foreign key(fiIdPelicula)
                                                 references tbpeliculas(fiIdPelicula),
@@ -224,6 +224,7 @@ insert tbCatCampo(fcCampo, fcDescCampo) values('Abr', 'Abrebiado');
 insert tbCatCampo(fcCampo, fcDescCampo) values('Lat', 'Latitud');
 insert tbCatCampo(fcCampo, fcDescCampo) values('Long', 'Longitud');
 insert tbCatCampo(fcCampo, fcDescCampo) values('Tam', 'Tamaño');
+insert tbCatCampo(fcCampo, fcDescCampo) values('Dir', 'Direccion');
 
 insert tbCatTpPer(fcDescTpPer, fnStatTpPer) values ('Fisica', 1);
 insert tbCatTpPer(fcDescTpPer, fnStatTpPer) values ('Moral', 1);
@@ -338,7 +339,51 @@ values('Tropa de Héroes',
 	'Cuenta la historia del primer escuadrón de fuerzas especiales enviado a Afganistán después del 9/11. Bajo el mando de un nuevo capitán, deben trabajar junto con un criminal de guerra para derrotar al Talibán.',
     'Michael Peña,Chris Hemsworth,Michael Shannon,Navid Negahban',
     'Nicolai Fuglsig',
-    'TropaHeroes');    
+    'TropaHeroes');
+    
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Hex Hacienda Santa Ines', 'Hacienda Santa Ines, Ex-Hacienda Santa Ines, 55790 Nextlalpan, Méx.', 19.7019244,-99.0735723);
+
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Plaza Coacalco', 'Av José López Portillo 220, Coacalco, 55714 San Francisco Coacalco, Méx.', 19.6258942,-99.0834886);
+
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Multiplaza ojo de agua', 'Boulevard Santa Cruz Ojo de Agua 88, 55760 San Francisco, Méx.', 19.6627959,-99.0186709);
+
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Plaza Bella Mexiquense', 'Calle Mexiquense 2, Col. Héroes de Tecamac, 55764 Ojo de Agua, Méx.', 19.6277473,-99.0236094);
+
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Lindavista', 'Tepeyac Insurgentes, 07020 Ciudad de México, CDMX', 19.4857316,-99.1358689);
+
+insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Bucareli', 'Bucareli 63, Juárez, 06600 Ciudad de México, CDMX', 19.4250874,-99.1701293);
+
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 1);
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 2);
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 3);
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 4);
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 5);
+insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 6);
+
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(1, 1);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(1, 2);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(1, 3);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(1, 4);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(1, 5);
+
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(2, 1);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(2, 2);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(2, 3);
+
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(3, 1);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(3, 2);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(3, 3);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(3, 4);
+
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 2);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 3);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 4);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 5);
+
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 1);
+insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 5);
+
+
 
 
 /*	------------------------------------	*/
@@ -374,20 +419,6 @@ end;
 /*		termina crea triggers				*/
 /*	------------------------------------	*/
 
-select *
-from tbUsu;
 
 select *
-from tbUsuPassw;
-
-select *
-from tbUsuCveApi;
-
-select *
-from tbPeliculas;
-
-select *
-from tbGenero;
-
-select *
-from tbclasificacion;
+from tbPelicualasCartelera;
