@@ -5,7 +5,7 @@ return array(
         'algorithm' => 'HS512' // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
         ),
     'database' => array(
-        'user'     => 'dave', // Database username
+        'user'     => 'daver', // Database username
         'password' => 'maradr', // Database password
         'host'     => 'localhost', //'yashiropaintingcom.ipagemysql.com', // Database host localhost
         'name'     => 'dbmadeinchiconcuac' // Database schema name
