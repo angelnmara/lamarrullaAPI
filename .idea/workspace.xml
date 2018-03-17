@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3734893c-f98d-4c9f-979c-94b2d363b48b" name="Default" comment="cambios en base de datos">
+    <list default="true" id="3734893c-f98d-4c9f-979c-94b2d363b48b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/spGetHorariosXPeliculaXSucursal.sql" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/db/createTables.sql" afterPath="$PROJECT_DIR$/db/createTables.sql" />
     </list>
     <ignored path="C:\xampp\htdocs\lamarrullaAPI\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -327,7 +327,7 @@
       <workItem from="1520210936675" duration="6869000" />
       <workItem from="1520311658797" duration="933000" />
       <workItem from="1521087136509" duration="1696000" />
-      <workItem from="1521231029964" duration="2568000" />
+      <workItem from="1521231029964" duration="3235000" />
     </task>
     <task id="LOCAL-00001" summary="se agrega en config los metodos reservados">
       <created>1494912309804</created>
@@ -406,11 +406,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521243324587</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="se agrega tabla horario semana">
+      <created>1521246854851</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1521246854851</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113045000" />
+    <option name="totallyTimeSpent" value="113712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -474,7 +481,8 @@
     <MESSAGE value="correccion muestra error" />
     <MESSAGE value="cambios en base de datos" />
     <MESSAGE value="se agrega store para obtener sucursales por pelicula" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega store para obtener sucursales por pelicula" />
+    <MESSAGE value="se agrega tabla horario semana" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agrega tabla horario semana" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
