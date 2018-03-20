@@ -32,11 +32,8 @@ END;;
 DELIMITER ;
 
 
-call spGetSucursalesXPeliculaId(5);
+call spGetSucursalesXPeliculaId(2);
 
 /*SHOW columns from table2;*/
 
 /*call spAPI (1, 'dbmadeinchiconcuac', 'table2', 'v', 'c', 2);*/
-
-select *
-from tbSucursales;
