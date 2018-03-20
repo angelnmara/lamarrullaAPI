@@ -116,8 +116,10 @@
             error_log($row["table_name"]);
         }
     }else{
-        echo json_encode("Tabla " . $request[2] . " no existe en base de datos");
-        return;
+        if($request[2]!="sp"){
+            echo json_encode("Tabla " . $request[2] . " no existe en base de datos");
+            return;
+        }
     }
 
     $campos = "";
@@ -142,8 +144,12 @@
     switch ($method) {
         case 'GET':
 
-            $sql = "call spAPI (1, '" . $request[1] . "', '" . $request[2] . "', 'v', 'c'," . $request[3] . ");";
-            
+            if($request[2]!="sp"){
+                $sql = "call spAPI (1, '" . $request[1] . "', '" . $request[2] . "', '', ''," . $request[3] . ");";
+            }else{
+                $sql = "call " . $request[3] . "(" . $request[4] . ")";
+            }
+
             /*print_r($sql);*/
             error_log($sql);
 

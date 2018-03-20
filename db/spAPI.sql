@@ -91,10 +91,14 @@ BEGIN
     WHERE TABLE_SCHEMA = db
     AND TABLE_NAME = tabla;
         
-    set @valortabla = concat(substring(@valortabla, 1, length(@valortabla) -8), ")");	
+    set @valortabla = concat(substring(@valortabla, 1, length(@valortabla) -8), ")");
+    
+    if(campos != '' and valores != '' and metodo = 1)then			
+		set @cwhere = concat(' where ', campos, ' = ', valores);
+    end if;
     
     set @t1 = concat("select group_concat(\"{\", ", @valortabla, ", \"} \") into @salida from ", db, ".", tabla, @cwhere);
-        
+    
     prepare stmt3 from @t1;
     execute stmt3;    
     deallocate prepare stmt3;    
@@ -113,5 +117,5 @@ DELIMITER ;
 
 begin;
 	/*call spAPI (4, 'dbmadeinchiconcuac', 'tbcatcampo', '', '', 2);*/
-    call spAPI (1, 'dbmadeinchiconcuac', 'tbcatcampo', 'v', 'c', 2);
+    call spAPI (1, 'dbmadeinchiconcuac', 'vSucursalesXPeliculaId', '', '', 0);
 rollback;
