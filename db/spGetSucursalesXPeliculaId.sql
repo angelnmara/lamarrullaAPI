@@ -9,9 +9,16 @@ BEGIN
 
     SELECT column_name FROM table_1 LIMIT 1 INTO local_variable_name;
 
-    SELECT * FROM table_1;*/
-    
-    select d.*
+    SELECT * FROM table_1;*/    
+    SELECT CONCAT(
+    '[', 
+    GROUP_CONCAT(JSON_OBJECT('fiIdSucursal', d.fiIdSucursal, 
+							'fcSucursalDesc', d.fcSucursalDesc,
+                            'fcSucursalDir',d.fcSucursalDir,
+                            'fdSucursalLat',d.fdSucursalLat,
+                            'fdSucursalLong',d.fdSucursalLong)),
+    ']'
+	) as salida
 	from tbPeliculas a
 	inner join tbPelicualasCartelera b
 	on a.fiIdPelicula = b.fiIdPelicula
@@ -19,10 +26,14 @@ BEGIN
 	on b.fiIdCartelera = c.fiIdCartelera
 	inner join tbSucursal d
 	on c.fiIdSucursal = d.fiIdSucursal
-	where a.fiIdPelicula = pelicula;
+	where a.fiIdPelicula = pelicula;	
     
 END;;
 DELIMITER ;
 
 
-call spGetSucursalesXPeliculaId(5);
+call spGetSucursalesXPeliculaId(2);
+
+/*SHOW columns from table2;*/
+
+/*call spAPI (1, 'dbmadeinchiconcuac', 'table2', 'v', 'c', 2);*/
