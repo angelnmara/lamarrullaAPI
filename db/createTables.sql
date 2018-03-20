@@ -170,20 +170,30 @@ create table if not exists tbPelicualasCartelera(fiIdPelicualasCartelera int not
                                                 references tbpeliculas(fiIdPelicula),
                                                 constraint foreign key(fiIdCartelera)
                                                 references tbcartelera(fiIdCartelera));
-                                    
+/*                                    
 create table if not exists tbTpSala(fiIdTpSala int not null auto_increment primary key,
+									fcTpSalaNom varchar(50),
 									fcTpSalaDesc varchar(500),
                                     fcTpSalaTam int,
                                     fcTpSalaStat bit default 1);
+*/
                                     
-create table if not exists tbSucursalTpSala(fiIdSucursalTpSala int not null auto_increment primary key,
-											fiIdSucursal int,
-                                            fiIdTpSala int,
-                                            constraint foreign key(fiIdSucursal)
-                                            references tbSucursal(fiIdSucursal),
-                                            constraint foreign key(fiIdTpSala)
-                                            references tbtpsala(fiIdTpSala)); 
+create table if not exists tbSala(fiIdSala int not null auto_increment primary key,								                                
+								fcSalaNom varchar(50),
+								fcSalaDesc varchar(500),
+                                fiSalaTam int);
                                     
+create table if not exists tbSucursalSalaPelicula(fiIdSucursalSalaPelicula int not null auto_increment primary key,
+												fiIdSucursal int,
+												fiIdSala int,
+                                                fiIdPelicula int,
+												constraint foreign key(fiIdSucursal)
+												references tbSucursal(fiIdSucursal),
+												constraint foreign key(fiIdSala)
+												references tbSala(fiIdSala),
+                                                constraint foreign key(fiIdPelicula)
+                                                references tbPelicula(fiIdPelicula));
+/*                                    
 create table if not exists tbSala(fiIdSala int not null auto_increment primary key,
 								fiIdSucursal int,
                                 fiIdTpSala int,
@@ -192,18 +202,19 @@ create table if not exists tbSala(fiIdSala int not null auto_increment primary k
                                 references tbSucursal(fiIdSucursal), 
                                 constraint foreign key(fiIdTpSala)
                                 references tbTpSala(fiIdTpSala));
+*/
                                 
 create table if not exists tbPeliculaHorarioSemana(fiIdPeliculaHorarioSemana int not null auto_increment primary key,
 												fiIdPelicula int,
-                                                fiIdSucursal int,
+                                                fiIdSucursalSala int,
                                                 fiPeliculaHorarioSemanaDia int,
                                                 fdPeliculaHorarioSemanaHora time,
                                                 fnPeliculaHorarioSemanaDiaFestivo bit default false,
                                                 fnPeliculaHorarioSemanaStat bit default true,
                                                 constraint foreign key(fiIdPelicula)
                                                 references tbPeliculas(fiIdPelicula),
-                                                constraint foreign key(fiIdSucursal)
-                                                references tbSucursal(fiIdSucursal));
+                                                constraint foreign key(fiIdSucursalSala)
+                                                references tbSucursalSala(fiIdSucursalSala));
                                                                                         
 /*	------------------------------------	*/
 /*		termina crea tablas					*/
@@ -397,62 +408,143 @@ insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 5);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 1);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 5);
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,1,'22:00');
+insert tbSala(fcSalaNom, fcSalaDesc, fcSalaTam) values ('A', 'Sala con el mayor numero de lugares', 70);
+insert tbSala(fcSalaNom, fcSalaDesc, fcSalaTam) values ('B', 'Sala intermedia en numero de lugares', 50);
+insert tbSala(fcSalaNom, fcSalaDesc, fcSalaTam) values ('C', 'Sala mas baja en numero de lugares', 35);
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,2,'22:00');
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,3,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,3,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,3,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,3,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,1,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,1,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,1,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,1,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,1,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,3,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,3,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(2,3,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,1,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,1,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,1,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,1,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,3,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,3,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(3,3,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,1,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,1,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,1,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,1,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,2,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,2,5);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,3,1);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,3,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(4,3,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(5,2,2);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(5,2,3);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(5,2,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(5,3,4);
+insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(5,3,5);
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,3,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,'22:00');
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,4,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,2,'22:00');
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,5,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,3,'22:00');
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,6,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,4,'22:00');
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,1,7,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,5,'22:00');
 
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'07:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'10:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'13:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'17:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'20:00');
-insert tbPeliculaHorarioSemana(fiIdPelicula, fiIdSucursal, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,1,'22:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,6,'22:00');
 
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(1,7,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,1,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,2,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,4,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,5,'22:00');
+
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,6,'07:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,6,'10:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,6,'13:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,6,'17:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,6,'20:00');
+insert tbPeliculaHorarioSemana(fiIdSucursalSalaPelicula, fiPeliculaHorarioSemanaDia, fdPeliculaHorarioSemanaHora)values(2,3,'22:00');
 
 /*	------------------------------------	*/
 /*			termina inserts					*/
