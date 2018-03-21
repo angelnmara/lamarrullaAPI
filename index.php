@@ -167,7 +167,7 @@
 
                 $sql = "call spAPI (2, '" . $request[1] . "', '" . $request[2] . "', '" . $campos . "', '" . $valores . "', " . $request[3] . " );";
 
-                print_r($sql);
+                //print_r($sql);
                         
         break;
 
