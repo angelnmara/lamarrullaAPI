@@ -25,7 +25,7 @@ drop table if exists tbPeliculaHorarioSemana;
 drop table if exists tbSucursalSalaPelicula;
 drop table if exists tbPeliculas;
 drop table if exists tbSala;
-drop table if exists tbSucursal;
+drop table if exists tbSucursales;
 drop table if exists tbGenero;
 drop table if exists tbClasificacion;
 
@@ -146,7 +146,7 @@ create table if not exists tbPeliculas(fiIdPelicula int not null auto_increment 
                                     constraint foreign key(fiIdClasificacion)
                                     references tbClasificacion(fiIdClasificacion));								
                                     
-create table if not exists tbSucursal(fiIdSucursal int not null auto_increment primary key,
+create table if not exists tbSucursales(fiIdSucursal int not null auto_increment primary key,
 									fcSucursalDesc varchar(500),
                                     fcSucursalDir varchar(1000),
                                     fdSucursalLat decimal(18,10),
@@ -160,7 +160,7 @@ create table if not exists tbCartelera(fiIdCartelera int not null auto_increment
                                     fiIdSucursal int,
                                     fnCarteleraStat bit default 1,
                                     constraint foreign key(fiIdSucursal)
-                                    references tbSucursal(fiIdSucursal));
+                                    references tbSucursales(fiIdSucursal));
                                     
 create table if not exists tbPelicualasCartelera(fiIdPelicualasCartelera int not null auto_increment primary key,
 												fiIdCartelera int,
@@ -188,7 +188,7 @@ create table if not exists tbSucursalSalaPelicula(fiIdSucursalSalaPelicula int n
 												fiIdSala int,
                                                 fiIdPelicula int,
 												constraint foreign key(fiIdSucursal)
-												references tbSucursal(fiIdSucursal),
+												references tbSucursales(fiIdSucursal),
 												constraint foreign key(fiIdSala)
 												references tbSala(fiIdSala),
                                                 constraint foreign key(fiIdPelicula)
@@ -338,7 +338,7 @@ values('Las Aventuras de Lara Croft',
 	1,
     118,
     2,
-	'Lara Croft, la independiente hija de un aventurero perdido, se esforzará más allá de sus límites cuando descubra la localización en la que su padre desapareció sin dejar rastro. Nueva película -reboot- sobre Lara Croft, la protagonista de la saga de videojuegos "Tomb Raider"',
+	'Lara Croft, la independiente hija de un aventurero perdido, se esforzará más allá de sus límites cuando descubra la localización en la que su padre desapareció sin dejar rastro. Nueva película -reboot- sobre Lara Croft, la protagonista de la saga de videojuegos ''Tomb Raider''',
     'Alicia Vikander,Walton Goggins,Dominic West,Daniel Wu',
     'Roar Uthanug',
     'AventurasLara');
@@ -363,17 +363,17 @@ values('Tropa de Héroes',
     'Nicolai Fuglsig',
     'TropaHeroes');
     
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Hex Hacienda Santa Ines', 'Hacienda Santa Ines, Ex-Hacienda Santa Ines, 55790 Nextlalpan, Méx.', 19.7019244,-99.0735723);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Hex Hacienda Santa Ines', 'Hacienda Santa Ines, Ex-Hacienda Santa Ines, 55790 Nextlalpan, Méx.', 19.7019244,-99.0735723);
 
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Plaza Coacalco', 'Av José López Portillo 220, Coacalco, 55714 San Francisco Coacalco, Méx.', 19.6258942,-99.0834886);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Plaza Coacalco', 'Av José López Portillo 220, Coacalco, 55714 San Francisco Coacalco, Méx.', 19.6258942,-99.0834886);
 
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Multiplaza ojo de agua', 'Boulevard Santa Cruz Ojo de Agua 88, 55760 San Francisco, Méx.', 19.6627959,-99.0186709);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Multiplaza ojo de agua', 'Boulevard Santa Cruz Ojo de Agua 88, 55760 San Francisco, Méx.', 19.6627959,-99.0186709);
 
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Plaza Bella Mexiquense', 'Calle Mexiquense 2, Col. Héroes de Tecamac, 55764 Ojo de Agua, Méx.', 19.6277473,-99.0236094);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Plaza Bella Mexiquense', 'Calle Mexiquense 2, Col. Héroes de Tecamac, 55764 Ojo de Agua, Méx.', 19.6277473,-99.0236094);
 
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Lindavista', 'Tepeyac Insurgentes, 07020 Ciudad de México, CDMX', 19.4857316,-99.1358689);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Lindavista', 'Tepeyac Insurgentes, 07020 Ciudad de México, CDMX', 19.4857316,-99.1358689);
 
-insert tbsucursal(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Bucareli', 'Bucareli 63, Juárez, 06600 Ciudad de México, CDMX', 19.4250874,-99.1701293);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Bucareli', 'Bucareli 63, Juárez, 06600 Ciudad de México, CDMX', 19.4250874,-99.1701293);
 
 insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 1);
 insert tbCartelera(fcCarteleraDesc, fdCarteleraFecIni, fdCarteleraFecFin, fiIdSucursal)values('Cartelera sem 3 Marzo', '20180312', '20180318', 2);
