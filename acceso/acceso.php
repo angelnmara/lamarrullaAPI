@@ -85,7 +85,7 @@
             }
 
             if(password_verify($passwdb, $this->getContrasenniaE())){
-                $tokenId    = base64_encode(mcrypt_create_iv(32));
+                $tokenId    = base64_encode(random_bytes (32));
                 $issuedAt   = time();
                 $notBefore  = $issuedAt + 10;  //Adding 10 seconds
                 $expire     = $notBefore + (60 * 60); // Adding 60 seconds
