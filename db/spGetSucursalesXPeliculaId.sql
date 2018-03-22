@@ -23,7 +23,7 @@ BEGIN
 	on a.fiIdPelicula = b.fiIdPelicula
 	inner join tbCartelera c
 	on b.fiIdCartelera = c.fiIdCartelera
-	inner join tbSucursal d
+	inner join tbSucursales d
 	on c.fiIdSucursal = d.fiIdSucursal
 	where a.fiIdPelicula = pelicula;	
     

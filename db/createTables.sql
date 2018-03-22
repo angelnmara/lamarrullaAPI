@@ -137,7 +137,7 @@ create table if not exists tbClasificacion(fiIdClasificacion int not null auto_i
 create table if not exists tbPeliculas(fiIdPelicula int not null auto_increment primary key,
 									fcPeliculaDesc char(100),
                                     fiIdGenero int,
-                                    fiDuracion int,                                    
+                                    fiPeliculaDuracion int,                                    
                                     fiIdClasificacion int,
                                     fcPeliculaSinopsis varchar(2000),
                                     fcPeliculaActores varchar(2000),
@@ -170,7 +170,7 @@ create table if not exists tbPelicualasCartelera(fiIdPelicualasCartelera int not
 												fiIdPelicula int,                                                
                                                 fnPelicualasCartelera bit default 1,
                                                 constraint foreign key(fiIdPelicula)
-                                                references tbpeliculas(fiIdPelicula),
+                                                references tbPeliculas(fiIdPelicula),
                                                 constraint foreign key(fiIdCartelera)
                                                 references tbcartelera(fiIdCartelera));
 /*                                    
@@ -311,7 +311,7 @@ values('R-18');
 insert tbClasificacion(fcClasificacionDesc)
 values('C');
 
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('Deseo de Matar', 
 	1,
     108,
@@ -321,7 +321,7 @@ values('Deseo de Matar',
     'Eli Roth',
     'DeseoMatar');
 
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('PANTERA NEGRA', 
 	1,
     126,
@@ -331,7 +331,7 @@ values('PANTERA NEGRA',
     'Ryan Coogler',
     'PanteraNegra');
     
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('La Forma Del Agua', 
 	3,
     126,
@@ -341,7 +341,7 @@ values('La Forma Del Agua',
     'Guillermo Del Toro',
     'FormaAgua');
     
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('Las Aventuras de Lara Croft', 
 	1,
     118,
@@ -351,7 +351,7 @@ values('Las Aventuras de Lara Croft',
     'Roar Uthanug',
     'AventurasLara');
     
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('La Maldición de la Casa Winchester', 
 	4,
     100,
@@ -361,7 +361,7 @@ values('La Maldición de la Casa Winchester',
     'Michael Spierig, Peter Spierig',
     'MaldicionWinchester');
     
-insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
+insert tbPeliculas(fcPeliculaDesc, fiIdGenero, fiPeliculaDuracion, fiIdClasificacion, fcPeliculaSinopsis, fcPeliculaActores, fcPeliculaDirectores, fcPeliculaURL) 
 values('Tropa de Héroes', 
 	1,
     130,
