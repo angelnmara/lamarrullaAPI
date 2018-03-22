@@ -1,174 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3734893c-f98d-4c9f-979c-94b2d363b48b" name="Default" comment="se agrega tabla horario semana">
-      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/.coveralls.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/composer.lock" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/explode.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/is-countable.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/IsCountable.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+    <list default="true" id="3734893c-f98d-4c9f-979c-94b2d363b48b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/acceso/acceso.php" afterPath="$PROJECT_DIR$/acceso/acceso.php" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change beforePath="$PROJECT_DIR$/db/createTables.sql" afterPath="$PROJECT_DIR$/db/createTables.sql" />
-      <change beforePath="$PROJECT_DIR$/db/spGetHorariosXPeliculaXSucursal.sql" afterPath="$PROJECT_DIR$/db/spGetHorariosXPeliculaXSucursal.sql" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/CHANGELOG.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/CONTRIBUTING.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/README.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/README.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/composer.json" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/composer.json" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/client/adapters.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/client/advanced.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/client/cookies.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/client/intro.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/client/static.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/headers.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/index.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/intro.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/request.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/doc/book/response.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/mkdocs.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/phpcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/AbstractMessage.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/AbstractMessage.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/AdapterInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/AdapterInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Curl.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Curl.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/ExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/ExceptionInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/InitializationException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/InitializationException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/InvalidArgumentException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/InvalidArgumentException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/OutOfRangeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/OutOfRangeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/RuntimeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/RuntimeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/TimeoutException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Exception/TimeoutException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Proxy.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Proxy.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Socket.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Socket.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/StreamInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/StreamInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Test.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Adapter/Test.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/ExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/ExceptionInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/InvalidArgumentException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/InvalidArgumentException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/OutOfRangeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/OutOfRangeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/RuntimeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Client/Exception/RuntimeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/ClientStatic.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/ClientStatic.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Cookies.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Cookies.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/ExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/ExceptionInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/InvalidArgumentException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/InvalidArgumentException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/OutOfRangeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/OutOfRangeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/RuntimeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Exception/RuntimeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractAccept.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractAccept.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractDate.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractDate.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractLocation.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AbstractLocation.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/AbstractFieldValuePart.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/AbstractFieldValuePart.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/AcceptFieldValuePart.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/AcceptFieldValuePart.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/CharsetFieldValuePart.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/CharsetFieldValuePart.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/EncodingFieldValuePart.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/EncodingFieldValuePart.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/LanguageFieldValuePart.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Accept/FieldValuePart/LanguageFieldValuePart.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptCharset.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptCharset.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptEncoding.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptEncoding.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptLanguage.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptLanguage.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptRanges.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AcceptRanges.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Age.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Age.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Allow.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Allow.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AuthenticationInfo.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/AuthenticationInfo.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Authorization.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Authorization.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/CacheControl.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/CacheControl.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Connection.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Connection.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentDisposition.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentDisposition.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentEncoding.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentEncoding.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLanguage.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLanguage.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLength.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLength.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLocation.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentLocation.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentMD5.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentMD5.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentRange.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentRange.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentSecurityPolicy.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentSecurityPolicy.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentTransferEncoding.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentTransferEncoding.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentType.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ContentType.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Cookie.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Cookie.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Date.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Date.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Etag.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Etag.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/DomainException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/DomainException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/ExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/ExceptionInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/InvalidArgumentException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/InvalidArgumentException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/RuntimeException.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Exception/RuntimeException.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Expect.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Expect.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Expires.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Expires.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/From.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/From.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/GenericHeader.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/GenericHeader.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/GenericMultiHeader.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/GenericMultiHeader.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/HeaderInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/HeaderInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/HeaderValue.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/HeaderValue.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Host.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Host.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfMatch.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfMatch.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfModifiedSince.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfModifiedSince.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfNoneMatch.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfNoneMatch.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfRange.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfRange.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfUnmodifiedSince.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/IfUnmodifiedSince.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/KeepAlive.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/KeepAlive.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/LastModified.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/LastModified.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Location.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Location.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/MaxForwards.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/MaxForwards.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/MultipleHeaderInterface.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/MultipleHeaderInterface.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Origin.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Origin.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Pragma.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Pragma.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ProxyAuthenticate.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ProxyAuthenticate.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ProxyAuthorization.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/ProxyAuthorization.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Range.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Range.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Referer.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Referer.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Refresh.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Refresh.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/RetryAfter.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/RetryAfter.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Server.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Server.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/SetCookie.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/SetCookie.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/TE.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/TE.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Trailer.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Trailer.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/TransferEncoding.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/TransferEncoding.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Upgrade.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Upgrade.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/UserAgent.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/UserAgent.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Vary.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Vary.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Via.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Via.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/WWWAuthenticate.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/WWWAuthenticate.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Warning.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Header/Warning.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/HeaderLoader.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/HeaderLoader.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Headers.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Headers.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/RemoteAddress.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/RemoteAddress.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/Request.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/Request.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/Response.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/PhpEnvironment/Response.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Request.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Request.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Response.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Response.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Response/Stream.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-http/src/Response/Stream.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/CHANGELOG.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/bin/update_hostname_validator.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/bin/update_hostname_validator.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/composer.json" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/composer.json" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/composer.lock" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/composer.lock" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/credit-card.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/credit-card.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/date.md" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/doc/book/validators/date.md" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/mkdocs.yml" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/mkdocs.yml" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Between.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Between.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ConfigProvider.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ConfigProvider.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/CreditCard.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/CreditCard.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Csrf.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Csrf.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/EmailAddress.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/EmailAddress.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Crc32.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Crc32.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ExcludeExtension.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ExcludeExtension.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ExcludeMimeType.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ExcludeMimeType.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Extension.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Extension.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/FilesSize.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/FilesSize.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Hash.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Hash.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ImageSize.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/ImageSize.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Md5.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Md5.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/MimeType.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/MimeType.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Sha1.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Sha1.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Size.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Size.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Upload.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/Upload.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/WordCount.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/File/WordCount.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Hostname.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Hostname.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Iban.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Iban.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Regex.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/Regex.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ValidatorPluginManager.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ValidatorPluginManager.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ValidatorPluginManagerFactory.php" afterPath="$PROJECT_DIR$/vendor/zendframework/zend-validator/src/ValidatorPluginManagerFactory.php" />
     </list>
     <ignored path="C:\xampp\htdocs\lamarrullaAPI\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -186,8 +21,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+            <state relative-caret-position="167">
+              <caret line="150" column="13" lean-forward="true" selection-start-line="150" selection-start-column="13" selection-end-line="150" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -198,6 +33,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
               <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -322,6 +167,11 @@
             <path>
               <item name="lamarrullaAPI" type="b2602c69:ProjectViewProjectNode" />
               <item name="lamarrullaAPI" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lamarrullaAPI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lamarrullaAPI" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -543,27 +393,41 @@
       <option name="project" value="LOCAL" />
       <updated>1521246854851</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="correcciones varias">
+      <created>1521645960221</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1521645960221</updated>
+    </task>
+    <task id="LOCAL-00014" summary="correcciones varias">
+      <created>1521673555763</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1521673555764</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125351000" />
+    <option name="totallyTimeSpent" value="130218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21449487" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21449487" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40994474" sideWeight="0.50292826" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45166403" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45166403" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -624,7 +488,8 @@
     <MESSAGE value="cambios en base de datos" />
     <MESSAGE value="se agrega store para obtener sucursales por pelicula" />
     <MESSAGE value="se agrega tabla horario semana" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega tabla horario semana" />
+    <MESSAGE value="correcciones varias" />
+    <option name="LAST_COMMIT_MESSAGE" value="correcciones varias" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,16 +524,6 @@
           <line>86</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/index.php</url>
-          <line>146</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/index.php</url>
-          <line>8</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="54" />
     </breakpoint-manager>
@@ -685,12 +540,12 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>$row[&quot;fiIdSucursal&quot;]</expression-string>
+        <expression-string>$row[&quot;salida&quot;]</expression-string>
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>$row[&quot;salida&quot;]</expression-string>
+        <expression-string>$row[&quot;fiIdSucursal&quot;]</expression-string>
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1069,14 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/zendframework/zend-http/src/Request.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1101,10 +948,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        <state relative-caret-position="167">
+          <caret line="150" column="13" lean-forward="true" selection-start-line="150" selection-start-column="13" selection-end-line="150" selection-end-column="13" />
           <folding />
         </state>
       </provider>
