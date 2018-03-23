@@ -25,7 +25,7 @@ drop table if exists tbCartelera;
 drop table if exists tbPeliculaHorario;
 drop table if exists tbSucursalSalaPelicula;
 drop table if exists tbPeliculas;
-drop table if exists tbSala;
+drop table if exists tbSalas;
 drop table if exists tbSucursales;
 drop table if exists tbGenero;
 drop table if exists tbClasificacion;
@@ -181,7 +181,7 @@ create table if not exists tbTpSala(fiIdTpSala int not null auto_increment prima
                                     fcTpSalaStat bit default 1);
 */
                                     
-create table if not exists tbSala(fiIdSala int not null auto_increment primary key,								                                
+create table if not exists tbSalas(fiIdSala int not null auto_increment primary key,								                                
 								fcSalaNom varchar(50),
 								fcSalaDesc varchar(500),
                                 fiSalaTam int);
@@ -194,7 +194,7 @@ create table if not exists tbSucursalSalaPelicula(fiIdSucursalSalaPelicula int n
 												constraint foreign key(fiIdSucursal)
 												references tbSucursales(fiIdSucursal),
 												constraint foreign key(fiIdSala)
-												references tbSala(fiIdSala),
+												references tbSalas(fiIdSala),
                                                 constraint foreign key(fiIdPelicula)
                                                 references tbPeliculas(fiIdPelicula));
 /*                                    
@@ -413,9 +413,9 @@ insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 5);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 1);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 5);
 
-insert tbSala(fcSalaNom, fcSalaDesc, fiSalaTam) values ('A', 'Sala con el mayor numero de lugares', 70);
-insert tbSala(fcSalaNom, fcSalaDesc, fiSalaTam) values ('B', 'Sala intermedia en numero de lugares', 50);
-insert tbSala(fcSalaNom, fcSalaDesc, fiSalaTam) values ('C', 'Sala mas baja en numero de lugares', 35);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('A', 'Sala con el mayor numero de lugares', 70);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('B', 'Sala intermedia en numero de lugares', 50);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('C', 'Sala mas baja en numero de lugares', 35);
 
 insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,1);
 insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,1);
