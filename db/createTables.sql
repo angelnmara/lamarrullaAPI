@@ -22,17 +22,21 @@ drop table if exists tbCatRol;
 drop table if exists tbPelicualasCartelera;
 drop table if exists tbCartelera;
 
+drop table if exists tbBoletos;
+
 drop table if exists tbPeliculaHorario;
 drop table if exists tbSucursalSalaPelicula;
 drop table if exists tbPeliculas;
+
+drop table if exists tbSalasButacas;
+
 drop table if exists tbSalas;
 drop table if exists tbSucursales;
 drop table if exists tbGenero;
 drop table if exists tbClasificacion;
-drop table if exists tbSucursalSalaPelicula;
 drop table if exists tbHoras;
 
-
+drop table if exists tbStatBoletos;
 
 
 /*	------------------------------------	*/
@@ -185,6 +189,18 @@ create table if not exists tbSalas(fiIdSala int not null auto_increment primary 
 								fcSalaNom varchar(50),
 								fcSalaDesc varchar(500),
                                 fiSalaTam int);
+                                
+create table if not exists tbSalasButacas(fiIdSalaButaca int not null auto_increment primary key,
+										fiIdSala int,
+										fcSalaButacaFila varchar(2),
+                                        fiSalaButacaColumna int,
+                                        fnSalaButacaStat bit default 1,
+                                        constraint foreign key (fiIdSala)
+                                        references tbSalas(fiIdSala));
+                                        
+create table if not exists tbStatBoletos(fiIdStatBoleto int not null auto_increment primary key,
+										fcStatBoletoDesc varchar(50),
+                                        fnStatBoletoStat bit default 1);
 
 /*falta constraint para que no se repita sucursal sala y pelicula*/                                    
 create table if not exists tbSucursalSalaPelicula(fiIdSucursalSalaPelicula int not null auto_increment primary key,
@@ -219,7 +235,21 @@ create table if not exists tbPeliculaHorario(fiIdPeliculaHorario int not null au
                                             constraint foreign key(fiIdSucursalSalaPelicula)
                                             references tbSucursalSalaPelicula(fiIdSucursalSalaPelicula),
                                             constraint foreign key(fiIdHora)
-                                            references tbHoras(fiIdHora));										
+                                            references tbHoras(fiIdHora));
+                                            
+create table if not exists tbBoletos(fiIdBoleto int not null auto_increment primary key,
+									fdBoletoCompra datetime default CURRENT_TIMESTAMP,
+                                    fdBoletoFechaPelicula date not null,                                    
+                                    fiIdPeliculaHorario int,
+                                    fiIdSalaButaca int,
+                                    fiIdStatBoleto int,
+                                    fnBoletoStat bit default 1,
+                                    constraint foreign key(fiIdPeliculaHorario)
+                                    references tbPeliculaHorario(fiIdPeliculaHorario),
+                                    constraint foreign key(fiIdSalaButaca)
+                                    references tbSalasButacas(fiIdSalaButaca),
+                                    constraint foreign key(fiIdStatBoleto)
+                                    references tbStatBoletos(fiIdStatBoleto));                                            
                                                                                         
 /*	------------------------------------	*/
 /*		termina crea tablas					*/
@@ -413,9 +443,9 @@ insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(4, 5);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 1);
 insert tbPelicualasCartelera(fiIdCartelera, fiIdPelicula)values(5, 5);
 
-insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('A', 'Sala con el mayor numero de lugares', 70);
-insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('B', 'Sala intermedia en numero de lugares', 50);
-insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('C', 'Sala mas baja en numero de lugares', 35);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('A', 'Sala con el mayor numero de lugares', 15);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('B', 'Sala intermedia en numero de lugares', 10);
+insert tbSalas(fcSalaNom, fcSalaDesc, fiSalaTam) values ('C', 'Sala mas baja en numero de lugares', 5);
 
 insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,1,1);
 insert tbSucursalSalaPelicula(fiIdSucursal, fiIdSala, fiIdPelicula) values(1,2,1);
@@ -627,6 +657,51 @@ insert tbPeliculaHorario(fiIdSucursalSalaPelicula, fiIdHora)values(25,3);
 insert tbPeliculaHorario(fiIdSucursalSalaPelicula, fiIdHora)values(25,4);
 insert tbPeliculaHorario(fiIdSucursalSalaPelicula, fiIdHora)values(25,5);
 insert tbPeliculaHorario(fiIdSucursalSalaPelicula, fiIdHora)values(25,6);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'A', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'A', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'A', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'A', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'A', 5);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'B', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'B', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'B', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'B', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'B', 5);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'C', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'C', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'C', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'C', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (1,'C', 5);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'A', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'A', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'A', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'A', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'A', 5);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'B', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'B', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'B', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'B', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (2,'B', 5);
+
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (3,'A', 1);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (3,'A', 2);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (3,'A', 3);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (3,'A', 4);
+insert tbSalasButacas(fiIdSala, fcSalaButacaFila, fiSalaButacaColumna) values (3,'A', 5);
+
+insert tbStatBoletos(fcStatBoletoDesc) values ('Comprado'); 
+insert tbStatBoletos(fcStatBoletoDesc) values ('Apartado');
+insert tbStatBoletos(fcStatBoletoDesc) values ('Cancelado');
+
+insert tbBoletos(fdBoletoFechaPelicula, fiIdPeliculaHorario, fiIdSalaButaca, fiIdStatBoleto) values(CURRENT_TIMESTAMP, 1,1,1);
+insert tbBoletos(fdBoletoFechaPelicula, fiIdPeliculaHorario, fiIdSalaButaca, fiIdStatBoleto) values(CURRENT_TIMESTAMP, 1,2,1);
+insert tbBoletos(fdBoletoFechaPelicula, fiIdPeliculaHorario, fiIdSalaButaca, fiIdStatBoleto) values(CURRENT_TIMESTAMP, 1,7,1);
+insert tbBoletos(fdBoletoFechaPelicula, fiIdPeliculaHorario, fiIdSalaButaca, fiIdStatBoleto) values(CURRENT_TIMESTAMP, 1,8,1);
 
 /*	------------------------------------	*/
 /*			termina inserts					*/
