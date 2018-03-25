@@ -5,12 +5,25 @@ use dbmadeinchiconcuac;
 drop procedure if exists spGetButacas;
 
 DELIMITER ;;
-CREATE DEFINER=CURRENT_USER PROCEDURE spGetButacas(idPelicula int, idSucursal int, idSala int, idHora int, fecha date)
-BEGIN
+CREATE DEFINER=CURRENT_USER PROCEDURE spGetButacas(idPelicula int, idSucursal int, idSala int, idHora int)
+BEGIN	
+    
+    declare fecha date;
+    set fecha = CURRENT_TIMESTAMP;
         
-    select fcSalaButacaFila, fiSalaButacaColumna, if(b.fiIdSalaButaca is null, 0, 1) as Vendido
+    select CONCAT(
+    '{"spGetHorariosXPeliculaXSucursal": [', 
+    GROUP_CONCAT(
+    JSON_OBJECT('fiIdSalaButaca', a.fiIdSalaButaca, 
+				'fiIdPeliculaHorario', fiIdPeliculaHorario,
+                'fdBoletoFechaPelicula', fecha,
+						'fcSalaButacaFila', fcSalaButacaFila, 
+                        'fiSalaButacaColumna', fiSalaButacaColumna,
+                        'Vendido', if(b.fiIdSalaButaca is null, 0, 1))),
+    ']}'
+	) as salida
 	from tbSalasButacas a
-	left outer join (select b.fiIdSalaButaca
+	left outer join (select b.fiIdSalaButaca, a.fiIdPeliculaHorario
 					from tbpeliculahorario a
 					inner join tbBoletos b
 					on a.fiIdPeliculaHorario = b.fiIdPeliculaHorario
@@ -23,10 +36,10 @@ BEGIN
 					and fdBoletoFechaPelicula = fecha) b
 	on a.fiIdSalaButaca = b.fiIdSalaButaca
 	where fiIdSala = idSala
-	order by 1,2;
+	order by 1;
     
 END;;
 DELIMITER ;
 
 
-call spGetButacas(1,1,1,1,'20180324');
+call spGetButacas(1,1,1,1);

@@ -401,7 +401,7 @@ values('Tropa de Héroes',
     'Nicolai Fuglsig',
     'TropaHeroes');
     
-insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Hex Hacienda Santa Ines', 'Hacienda Santa Ines, Ex-Hacienda Santa Ines, 55790 Nextlalpan, Méx.', 19.7019244,-99.0735723);
+insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Ex Hacienda Santa Ines', 'Hacienda Santa Ines, Ex-Hacienda Santa Ines, 55790 Nextlalpan, Méx.', 19.7019244,-99.0735723);
 
 insert tbsucursales(fcSucursalDesc, fcSucursalDir, fdSucursalLat, fdSucursalLong) values('Sucursal Plaza Coacalco', 'Av José López Portillo 220, Coacalco, 55714 San Francisco Coacalco, Méx.', 19.6258942,-99.0834886);
 
